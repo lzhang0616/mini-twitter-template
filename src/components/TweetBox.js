@@ -27,6 +27,11 @@ export default class TweetBox extends Component {
     const { onTweet } = this.props;
 
     onTweet(text);
+
+    this.setState({
+      text: '',
+      photoAdded: false
+    });
   }
 
   remainingCharacters = () =>  {
