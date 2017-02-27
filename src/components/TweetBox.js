@@ -18,6 +18,10 @@ export default class TweetBox extends Component {
     this.setState({text: e.target.value});
   }
 
+  onTweetSubmit = () => {
+    this.setState({text: ''});
+  }
+
   onPhotoAddedClick = () => {
     this.setState({photoAdded: !this.state.photoAdded});
   }
@@ -34,7 +38,7 @@ export default class TweetBox extends Component {
   }
 
   render() {
-    const { onTextChange, remainingCharacters, onPhotoAddedClick, renderErrorMessage } = this;
+    const { onTextChange, remainingCharacters, onPhotoAddedClick, onTweetSubmit, renderErrorMessage } = this;
     const { text, photoAdded } = this.state;
 
     return (
@@ -42,7 +46,7 @@ export default class TweetBox extends Component {
         {renderErrorMessage()}
         <textarea className='form-control' value={text} onChange={onTextChange}></textarea><br/>
         <span>{remainingCharacters()}</span>
-        <button className='btn btn-primary pull-right' disabled={text.length === 0 || text.length > MAX_TWEET_LENGTH}>Tweet</button>
+        <button className='btn btn-primary pull-right' onClick={onTweetSubmit}disabled={text.length === 0 || text.length > MAX_TWEET_LENGTH}>Tweet</button>
         <button className='btn btn-default pull-right' onClick={onPhotoAddedClick}>{photoAdded ? "✓ Photo Added" : "Add Photo"}</button>
       </div>
     );
