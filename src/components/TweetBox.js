@@ -19,7 +19,10 @@ export default class TweetBox extends Component {
   }
 
   onTweetSubmit = () => {
-    this.setState({text: ''});
+    this.setState({
+      text: '',
+      photoAdded: false
+    });
   }
 
   onPhotoAddedClick = () => {
