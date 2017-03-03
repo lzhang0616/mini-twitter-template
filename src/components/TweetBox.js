@@ -48,9 +48,11 @@ export default class TweetBox extends Component {
       <div className='well clearfix'>
         {renderErrorMessage()}
         <textarea className='form-control' value={text} onChange={onTextChange}></textarea><br/>
-        <span>{remainingCharacters()}</span>
-        <button className='btn btn-primary pull-right' onClick={onTweetSubmit}disabled={text.length === 0 || text.length > MAX_TWEET_LENGTH}>Tweet</button>
-        <button className='btn btn-default pull-right' onClick={onPhotoAddedClick}>{photoAdded ? "✓ Photo Added" : "Add Photo"}</button>
+        <div className='btn-toolbar' >
+          <span className='badge'>{remainingCharacters()}</span>
+          <button className='btn btn-primary pull-right' onClick={onTweetSubmit}disabled={text.length === 0 || text.length > MAX_TWEET_LENGTH}>Tweet</button>
+          <button className='btn btn-default pull-right' onClick={onPhotoAddedClick}>{photoAdded ? "✓ Photo Added" : "Add Photo"}</button>
+        </div>
       </div>
     );
   }
